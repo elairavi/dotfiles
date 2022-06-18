@@ -1,0 +1,168 @@
+
+##----- Keybindings for bspwm ------##
+
+## Terminal ##
+super + Return
+	alacritty && rm -rf ~/.pki
+
+## Dmenu Launcher / Dmenu scripts ##
+super + d
+  $HOME/.config/dmenu/dmenu-patched
+
+# Dmenu One Video
+super + y
+  ~/Documents/scripts/youtube/yt-nonfree/ytfzf -l -D
+
+# Subscriptions
+ctrl + shift + L
+  ~/Documents/scripts/youtube/yt-nonfree/ytfzf -S --sort -l -D
+
+# Arch Manual
+super + a
+  ~/Documents/scripts/arch-manual-dmenu
+
+## xwallpaper/nsxiv ##
+super + shift + I
+ alacritty -e nsxiv -b -t $HOME/Pictures/wallpapers/art
+
+## Torrent Client ##
+super + shift + T
+  transmission-gtk
+
+## Pacman / Aur ##
+alt + ctrl + p
+  alacritty --hold -e ~/Documents/scripts/pkg
+
+## Audio ##
+super + shift + v
+ alacritty -e pulsemixer
+
+## File Browser ##
+super + p
+	 pcmanfm
+
+## Neovim ##
+super + v
+  alacritty -e nvim
+
+## Music ##
+super + m
+  alacritty -e lf ~/Music
+
+## gotop ##
+super + t
+ alacritty -e gotop
+
+## lf ##
+super + r
+  alacritty -e ~/.config/lf/scripts/lfub
+
+## Web Browser ##
+super + w
+  brave --use-gl=desktop --enable-features=VaapiVideoDecoder --disable-features=UseChromeOSDirectVideoDecoder
+
+## X11-color-picker ##
+super + shift + c
+  $HOME/Documents/scripts/xcp
+
+## gammastep ##
+super + g
+  killall gammastep
+
+super + shift + g
+  exec gammastep
+
+## screenshot ##
+super + Print
+ maim ~/Pictures/screenshots/$(date +%s).png
+
+## Brighness control ##
+XF86MonBrightness{Up,Down}
+	brightness{ --inc, --dec}
+
+## volume up ##
+alt + F12
+   pamixer --allow-boost -i 5
+
+## volume down ##
+alt + F11
+  pamixer -d 5
+
+## Mute ##
+alt + F10
+   pamixer -t
+
+## Restart polybar ##
+super + shift + p
+  ~/.config/polybar/scripts/launch.sh
+
+## Close App ##
+super + q
+ bspc node -c
+
+## quit the session ##
+super + ctrl + Print
+ bspc {quit}
+
+## logout Prompt ##
+super + ctrl + Delete
+ ~/Documents/scripts/logout
+
+## Kill A Program ##
+super + ctrl + shift + K
+ exec xkill
+
+## restart the session ##
+super + shift + r
+ bspc wm -r
+
+## Toggle fullscreen on and off ##
+super + f
+  bspc node -t fullscreen || bspc node -t tiled
+
+## Toggle floating on and off ##
+super + shift + f
+   bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+
+## focus the node in the given direction ##
+super + {_,shift + }{h,j,k,l}
+	bspc node -{f,s} {west,south,north,east}
+
+## expand a window by moving one of its side ##
+super + ctrl + {h,j,k,l}
+ {bspc node -z right -20 0; \
+ bspc node -z left +20 0, \
+ bspc node -z top 0 -20; \
+ bspc node -z bottom 0 +20, \
+ bspc node -z top 0 +20; \
+ bspc node -z bottom 0 -20, \
+ bspc node -z right +20 0; \
+ bspc node -z left -20 0}
+
+## Move from a workspace to another and focus between them back and forth ##
+super + {1-9,0}
+    desktop='^{1-9,10}'; \
+    bspc query -D -d "$desktop.focused" && bspc desktop -f last || bspc desktop -f "$desktop"
+
+## Send a program to a workspace and follow ##
+super + shift + {1-9,0}
+    bspc node -d '^{1-9,10}' --follow
+
+## Send an program to another workspace and stay on the current one ##
+super + ctrl {1-9,0}
+	 bspc node -d focused:'^{1-9,10}'
+
+## cycle between workspaces ##
+super + n
+ bspc desktop -f {next}.local
+
+super + b
+ bspc desktop -f {prev}.local
+
+## Select 2 programs or more and send them to a workspace ##
+super + {_,shift + }n
+    bspc node -f {next,prev}.local
+
+## move floating window ##
+super + alt + {h,j,k,l}
+	bspc node -v {-20 0,0 20,0 -20,20 0}

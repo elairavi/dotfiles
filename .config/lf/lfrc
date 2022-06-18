@@ -1,0 +1,174 @@
+
+## Basic Settings ##
+set hidden true
+set drawbox true
+set ignorecase true
+set icons true
+set shell zsh
+set shellopts '-euy'
+set ifs "\n"
+set filesep "\n"
+set previewer '~/.config/lf/scripts/scope'
+set cleaner '~/.config/lf/scripts/cleaner'
+# set preview true
+
+## Custom Mappings ##
+map gz targz
+map xt unarchive
+map dd delete
+map pp paste
+map c cut
+map yy copy
+map yn yank_name
+map yp yank_path
+map <enter> open
+map r reload
+map C clear
+map mx chmod
+map S search
+map bg setwallpaper
+map I push A<c-a>            # at the very beginning
+map M push A<a-b><a-b><a-f>  # before extention
+map a push A<a-b>            # after extention
+map A rename                 # at the very end
+map br bulk-rename
+map pa $~/.config/lf/scripts/vimv $fx
+
+## Cd Into ##
+map ba cd ~/Documents/scripts
+map dw cd ~/Downloads
+map Vi cd ~/Videos
+map dc cd ~/.config
+map sx cd ~/Pictures
+map gi cd ~/Documents/git-box
+map df cd ~/Documents/configFiles
+map do cd ~/Documents
+map mu cd ~/Music
+map ` cd ~/
+map me cd ~/.local/remote/lfmac
+
+## Remove some defaults ##
+map m
+map p
+map d
+map o
+map f
+map y
+map "'"
+map '"'
+map sa
+map sc
+map se
+map sn
+map ss
+map st
+#map c
+#map e
+#map n
+#map /
+
+#### Functions ####
+
+## Default stuff ##
+cmd open ${{
+    case $(file --mime-type $f -b) in
+        text/*|application/json) $EDITOR "$f";;
+        image/vnd.djvu|application/pdf) epdfview $fx;;
+        image/*) nsxiv -b -f $fx;;
+        # audio/*) mpv --no-video $fx;;
+        audio/*) mpv --pause=no $fx;;
+        video/*) mpv --pause=no $fx;;
+        *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
+    esac
+}}
+
+## copy path ##
+cmd yank_path ${{
+set -f
+readlink -f $f | xclip -selection clipboard
+}}
+
+## copy name ##
+cmd yank_name ${{
+set -f
+basename "$(readlink -f "$f")" | xclip -selection clipboard
+}}
+
+## chmod ##
+cmd chmod %{{
+    chmod +x "$fx"
+    lf -remote "send $id reload"
+}}
+
+## mkdir ##
+cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
+map md push :mkdir<space>
+
+#cmd mkdir ${{
+#  printf "Directory Name: "
+#  read ans
+#  mkdir $ans
+#}}
+
+## makefile ##
+cmd mkfile ${{
+  printf "File Name: "
+  read ans
+  $EDITOR $ans
+}}
+map mf mkfile
+
+## Open with ##
+cmd open-with %"$@" $fx
+map ow push :open-with<space>
+
+## Set Wallpaper ##
+cmd setwallpaper %cp "$f" ~/.config/nsxiv/wall && xwallpaper --zoom "$f"
+
+## title bar status ##
+cmd on-cd &{{
+    printf "\033]0; $PWD\007" > /dev/tty
+}}
+
+## Archive bindings ##
+cmd unarchive ${{
+  case "$f" in
+      *.zip) unzip "$f" ;;
+      *.tar.gz) tar -xzvf "$f" ;;
+      *.tar.bz2) tar -xjvf "$f" ;;
+      *.tar) tar -xvf "$f" ;;
+      *) echo "Unsupported format" ;;
+  esac
+}}
+
+cmd zip %zip -r "$f" "$f"
+cmd tar %tar cvf "$f.tar" "$f"
+cmd targz %tar cvzf "$f.tar.gz" "$f"
+cmd tarbz2 %tar cjvf "$f.tar.bz2" "$f"
+
+cmd stripspace %stripspace "$f"
+
+## bulk-rename ##
+cmd bulk-rename ${{
+    old="$(mktemp)"
+    new="$(mktemp)"
+    if [ -n "$fs" ]; then
+        fs="$(basename $fs)"
+    else
+        fs="$(ls)"
+    fi
+    printf '%s\n' "$fs" >"$old"
+    printf '%s\n' "$fs" >"$new"
+    $EDITOR "$new"
+    [ "$(wc -l < "$new")" -ne "$(wc -l < "$old")" ] && exit
+    paste "$old" "$new" | while IFS= read -r names; do
+        src="$(printf '%s' "$names" | cut -f1)"
+        dst="$(printf '%s' "$names" | cut -f2)"
+        if [ "$src" = "$dst" ] || [ -e "$dst" ]; then
+            continue
+        fi
+        mv -- "$src" "$dst"
+    done
+    rm -- "$old" "$new"
+    lf -remote "send $id unselect"
+}}

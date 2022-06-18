@@ -1,0 +1,346 @@
+
+# ------------------------------ #
+# Configuration File For Polybar #
+# ------------------------------ #
+
+### Colors ###
+[colors]
+
+## Text Color ##
+foreground = #DEDDDA
+
+## Blueis Modules Color ##
+background-alt = #aa7E9191
+# background-alt = #333333
+# background-alt = #7FA094
+# background-alt = #828E93
+# background-alt = #919191
+# background-alt = #839191
+# background-alt = #819191
+
+## Background Color ##
+background = #aa0a0d11
+# background = #aa0e1112
+# background = #141a1b
+
+### Bar Settings ###
+[bar/nasa]
+width = 100%
+height = 18
+# height = 21
+radius = 0.0
+fixed-center = true
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+border-size = 0
+border-top-size = 0
+border-bottom-size = 0
+# border-top-size = 1
+# border-bottom-size = 1
+
+border-color = #141a1b
+#border-color = #1B2224
+padding = 0
+module-margin = 0
+
+### Fonts ###
+font-0 = "Mononoki Nerd Font:pixelsize=9;2"
+font-1 = "Iosevka Nerd Font:size=9;2"
+font-2 = "Terminus:size=8;2"
+font-3 = "DejaVu Sans Mono wifi ramp:size=10;2"
+
+# font-3 = "DejaVuSansMono Nerd Font:size=9;2"
+# font-0 = "Mononoki Nerd Font:pixelsize=9;2:antialias=true:autohint=true"
+# font-1 = "Iosevka Nerd Font:size=9;2:antialias=true:autohint=true"
+# font-2 = "Terminus:size=8;2:antialias=true:autohint=true"
+
+### bspwm Config ###
+modules-left = bspwm float-mode xwindow
+modules-center =
+modules-right = wired-network wlan arch-aur-updates simple-weather pulseaudio cpu temperature date
+
+separator = |
+separator-background = ${colors.background}
+tray-position = right
+tray-padding = 0
+scroll-down = bspc desktop -f prev.local
+scroll-up = bspc desktop -f next.local
+wm-name = bspwm
+wm-restack = bspwm
+enable-ipc = true
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+### Other Setting ###
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 0
+margin-bottom = 0
+
+#     
+
+### Xwindow ###
+[module/xwindow]
+type = internal/xwindow
+
+label = %title:0:78:%
+label-padding-left = 1
+label-padding-right = 0
+label-empty-padding-left = 1
+label-empty-padding-right = 1
+label-empty = Manjaro Gnu/linux Operating System
+
+# ## With Colors ##
+# label-empty-foreground = #000000
+# label-empty-background = ${colors.background-alt}
+# format-foreground = #000000
+# format-background = ${colors.background-alt}
+
+## Without Colors ##
+label-empty-foreground = ${colors.foreground}
+format-foreground = ${colors.foreground}
+
+### WorkSpaces ###
+[module/bspwm]
+type = internal/bspwm
+
+pin-workspaces = true
+inline-mode = false
+enable-click = true
+enable-scroll = true
+reverse-scroll = true
+fuzzy-match = true
+format = <label-state>
+format-font = 2
+label-monitor = %name%
+
+ls-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-8 = 8;
+ws-icon-9 = 9;
+ws-icon-default = 
+#ls-icon-0 = 1;
+# 
+
+# %index%
+label-focused = %name%
+# label-focused-foreground = ${colors.foreground}
+# label-focused-background = ${colors.background-alt}
+label-focused-padding = 2
+label-focused-foreground = #A5C8C6
+
+label-occupied = '%name%
+label-occupied-foreground = ${colors.foreground}
+label-occupied-background = ${colors.background}
+label-occupied-padding = 2
+
+label-urgent = %name%
+label-urgent-foreground = ${colors.foreground}
+label-urgent-background = ${colors.background}
+label-urgent-padding = 2
+
+label-empty = %name%
+label-empty-foreground = ${colors.foreground}
+label-empty-background = ${colors.background}
+label-empty-padding = 2
+
+; Separator in between workspaces
+label-separator =
+label-separator-padding = 0
+label-separator-foreground = ${color.ALTBLACK}
+
+### Cpu Load ###
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-padding-right = 0
+label = %percentage:2%%
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-padding = 1
+
+### Cpu Temperature ###
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 110
+
+format = <ramp> <label>
+format-warn = <ramp> <label-warn>
+format-background = ${colors.background}
+format-warn-foreground = ${colors.foreground}
+format-foreground = ${colors.foreground}
+format-padding = 1
+format-warn-padding = 1
+label = %temperature-c%
+label-warn = %temperature-c%
+interval = 5
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-5 = 
+ramp-6 = 
+ramp-7 = 
+ramp-8 = 
+ramp-9 = 
+ramp-font = 2
+
+### Date and Time ###
+[module/date]
+type = internal/date
+# interval = 1
+
+time =  %H:%M |
+# time =  %I:%M %p |
+# time =  %a %H:%M |
+# time =  %H:%M:%S |
+
+date-alt = %A %B %e %Y|
+
+label = %date% %time%
+label-foreground = ${colors.foreground}
+label-background = ${colors.background}
+label-padding = 1
+label-padding-right = 1
+label-padding-left = 0
+
+### Audio ###
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = <ramp-volume> <label-volume>
+# format-volume =  <label-volume>
+label-volume = %percentage%%
+format-volume-foreground = ${colors.foreground}
+format-volume-background = ${colors.background}
+format-volume-padding = 1
+click-right = alacritty -e pulsemixer
+
+ramp-volume-0 = 
+ramp-volume-1 = 
+ramp-volume-2 = 
+ramp-volume-3 = 
+ramp-volume-4 = 
+ramp-volume-5 = 
+ramp-volume-6 = 
+ramp-volume-7 = 
+ramp-volume-8 = 
+ramp-volume-9 = 
+ramp-volume-font = 2
+
+label-muted =  muted
+format-muted-foreground = ${colors.foreground}
+# format-muted-background = ${colors.background-alt}
+format-muted-padding = 1
+
+### wired-network ###
+[module/wired-network]
+type = internal/network
+interface = enp3s0
+interval = 1
+
+format-connected = <label-connected>
+format-disconnected = <label-disconnected>
+label-connected = | %{A1:alacritty -e nmtui:}  %downspeed%%{A}
+# label-connected = | %{A1:nm-connection-editor:}%  %downspeed%{A}
+
+format-connected-background = ${colors.background}
+format-disconnected-background = ${colors.background}
+label-connected-foreground = ${colors.foreground}
+
+format-connected-padding = 0
+format-disconnected-padding = 0
+label-connected-padding-right = 1
+label-disconnected-padding-right = 1
+# label-connected-padding-right =
+
+### Wifi/Down And up Speed ###
+[module/wlan]
+type = internal/network
+interface = wlp2s0
+interval = 1
+accumulate-stats = true
+unknown-as-up = true
+
+format-connected-background = ${colors.background}
+format-disconnected-background = ${colors.background}
+label-connected-foreground = ${colors.foreground}
+label-disconnected-foreground = ${colors.foreground}
+
+format-connected-padding = 0
+label-disconnected-padding = 0
+label-connected-padding-right = 1
+label-disconnected-padding-right = 1
+
+label-connected = %{A1:alacritty -e nmtui:} %downspeed%%{A}
+label-disconnected = %{A1:alacritty -e nmtui:}睊  Offline%{A}
+# label-disconnected = %{A1:alacritty -e nmtui:}睊  %downspeed%%{A}
+format-connected = | <ramp-signal><label-connected>
+format-disconnected = | <label-disconnected>
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+ramp-signal-2 = 
+ramp-signal-3 = 
+ramp-signal-4 = 
+
+# ramp-signal-0 = 
+# ramp-signal-1 = 
+# ramp-signal-2 = 
+# ramp-signal-3 = 
+# ramp-signal-4 = 
+# ramp-signal-5 = 
+# ramp-signal-6 = 
+# ramp-signal-7 = 
+# ramp-signal-8 = 
+# ramp-signal-9 = 
+
+# ramp-signal-0 = 
+# ramp-signal-1 = 
+# ramp-signal-2 = 
+# ramp-signal-3 = 
+# ramp-signal-4 = 
+# ramp-signal-5 = 
+
+### Pacman and Aur Updates ###
+[module/arch-aur-updates]
+type = custom/script
+exec = ~/.config/polybar/scripts/check-all-updates.sh
+interval = 7200
+label =  :%output%
+label-padding = 1
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-prefix-foreground = ${colors.foreground}
+
+### Simple-Weather ###
+[module/simple-weather]
+type = custom/script
+exec = ~/.config/polybar/scripts/simple-weather.sh
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+interval = 1200
+label-padding = 1
+#label-font = 3
+
+### Floating Mode ###
+[module/float-mode]
+type = custom/script
+exec = echo []=
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+click-left = bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
+click-right = ~/.config/polybar/scripts/calender.sh
+# click-left = ~/.config/dmenu/dmenu-patched

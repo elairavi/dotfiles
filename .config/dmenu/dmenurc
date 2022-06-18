@@ -1,0 +1,23 @@
+
+## Config file for dmenu-patched ##
+
+## Define the font for dmenu to be used ##
+DMENU_FN="MononokiNerdFont-8.6"
+
+## Background colour for unselected menu-items ##
+DMENU_NB="#0a0d11"
+
+## Textcolour for unselected menu-items ##
+DMENU_NF="#F9FAF9"
+
+## Background colour for selected menu-items ##
+DMENU_SB="#7E9191"
+
+## Textcolour for selected menu-items ##
+DMENU_SF="#000000"
+
+## Command for the terminal application to be used ##
+TERMINAL_CMD="alacritty -e"
+
+## Export our variables ##
+DMENU_OPTIONS="-fn $DMENU_FN -nb $DMENU_NB -nf $DMENU_NF -sf $DMENU_SF -sb $DMENU_SB"

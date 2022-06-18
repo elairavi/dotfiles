@@ -1,0 +1,8 @@
+#!/bin/sh
+
+INPUT="$1"
+for i in *.mkv ; do
+    ffmpeg -i "$i" -bsf:v h264_mp4toannexb -sn -map 0:0 -map 0:1 -vcodec libx264 "$i.ts"
+    mv "$i.ts" "$i.mpg"
+    sleep 3
+done

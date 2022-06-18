@@ -1,0 +1,102 @@
+# Default colors
+colors:
+  primary:
+    background: "#0a0d11"
+    foreground: "#FFFFFF"
+
+# Normal colors
+  normal:
+    black: "#282A2E"
+    red: "#A54242"
+    green: "#49B77B"
+    yellow: "#DE935F"
+    blue: "#43AAC0"
+    magenta: "#85678F"
+    cyan: "#5E8D87"
+    white: "#C5C8C6"
+
+# Bright colors
+  bright:
+    black: "#373B41"
+    red: "#CC6666"
+    green: "#49B77B"
+    yellow: "#F0C674"
+    blue: "#81A2BE"
+    magenta: "#B294BB"
+    cyan: "#5E8D87"
+    white: "#C5C8C6"
+
+# TERM variable
+env:
+    TERM: xterm-256color
+
+# Opacity
+window:
+  opacity: 0.8
+
+# Fonts
+font:
+  normal:
+    family: "JetBrains Mono Nerd Font"
+    style: Regular
+  bold:
+    family: "JetBrains Mono Nerd Font"
+    style: Bold
+  italic:
+    family: "JetBrains Mono Nerd Font"
+    style: Italic
+  bold_italic:
+    family: "JetBrains Mono Nerd Font"
+    style: Bold Italic
+
+# Point size
+  size: 9.0
+
+# Window options
+window:
+
+# Allow terminal programs to change Alacritty's window title.
+  dynamic_title: true
+
+  dimensions:
+    columns: 87
+    lines: 42
+
+  padding:
+    x: 11
+    y: 10
+
+  offset:
+    x: 0
+    y: 0
+  glyph_offset:
+    x: 0
+    y: 0
+
+scrolling:
+  history: 10000
+
+  multiplier: 10
+
+# If `true`, bold text is drawn using the bright color variants.
+draw_bold_text_with_bright_colors: true
+
+selection:
+  semantic_escape_chars: ',│`|:"'' ()[]{}<>'
+  save_to_clipboard: true
+
+live_config_reload: true
+
+# key bindings
+key_bindings:
+  - { key: P,        mods: Control,       action: Paste            }
+  - { key: Insert,   mods: Shift,         action: Paste            }
+  - { key: Y,        mods: Control,       action: Copy             }
+  - { key: Key0,     mods: Control,       action: ResetFontSize    }
+  - { key: Equals,   mods: Control,       action: IncreaseFontSize }
+  - { key: Plus,     mods: Control,       action: IncreaseFontSize }
+  - { key: Minus,    mods: Control,       action: DecreaseFontSize }
+
+# Vi Mode
+  - { key: Space,  mods: Alt,       mode: Vi, action: ScrollToBottom          }
+  - { key: Space,  mods: Alt,                 action: ToggleViMode            }

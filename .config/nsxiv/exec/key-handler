@@ -1,0 +1,11 @@
+#!/usr/bin/sh
+
+while read file
+do
+  fullpath="$(pwd)/$file"
+  case "$1" in
+  "w")
+        cp "$file" ~/.config/nsxiv/wall &&
+        xwallpaper --zoom "$HOME/.config/nsxiv/wall"
+    esac
+done
