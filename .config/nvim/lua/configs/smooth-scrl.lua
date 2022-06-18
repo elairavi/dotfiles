@@ -12,15 +12,15 @@ require('neoscroll').setup({
 
 local t = {}
 
--- ('alt + u' for scrolling up , 'alt + d' for scrolling down)
+-- ['alt + u'] for scrolling up , ['alt + d'] for scrolling down
 t['<A-u>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '250'}}
 t['<A-d>'] = {'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '250'}}
 
--- ('alt + k' for scrolling up , 'alt + j' for scrolling down)
+-- ['alt + k'] for scrolling up , ['alt + j'] for scrolling down)
 t['<A-k>'] = {'scroll', {'-vim.wo.scroll', 'false', '150', [['sine']]}}
 t['<A-j>'] = {'scroll', { 'vim.wo.scroll', 'false', '150', [['sine']]}}
 
--- ('ctrl + b' for scrolling up , 'ctrl + f' for scrolling down)
+-- ['ctrl + b'] for scrolling up , ['ctrl + f'] for scrolling down)
 t['<C-b>'] = {'scroll', {'-vim.api.nvim_win_get_height(0)', 'true', '250'}}
 t['<C-f>'] = {'scroll', { 'vim.api.nvim_win_get_height(0)', 'true', '250'}}
 
