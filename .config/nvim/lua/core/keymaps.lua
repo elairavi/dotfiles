@@ -30,6 +30,12 @@ map("n", "<C-j>", ":resize +2<cr>", {})
 map("n", "<C-k>", ":resize -2<cr>", {})
 map("n", "<C-l>", ":vertical resize -2<cr>", {})
 
+-- Telescope
+map("n", "<leader>b", ":Telescope buffers<CR>", {})  -- Preview for all opened buffers
+map('n', "<leader>of", ":Telescope oldfiles<CR>", {}) -- Old files
+map('n', "<leader>f", ":Telescope find_files<CR>", {}) -- Find files
+map('n', "<leader>gs", ":Telescope git_status<CR>", {}) -- git status
+
 -- Alternate way to save and quit nvim
 map("n", "<A-w>", ":w<CR>", {})  -- save file
 map("n", "<A-q>", ":q<CR>", {})  -- quit nvim
@@ -44,7 +50,7 @@ map("x", "<leader>c", ":'<,'>CommentToggle<CR>", {}) -- Comment Multiple Lines I
 map('n', 'Q', 'q', {})
 map('n', 'q', '<nop>', {})
 
--- GitSings mappings
+-- GitSings
 map('n', "<leader>h", ":Gitsigns preview_hunk<CR>", {})  -- preview_hunk
 map('n', "<leader>r", ":Gitsigns reset_buffer<CR>", {})  -- reset_buffer
 
@@ -52,7 +58,7 @@ map('n', "<leader>r", ":Gitsigns reset_buffer<CR>", {})  -- reset_buffer
 map('n', "<leader>a", ":set laststatus=3<CR> | :Alpha<CR>", {})
 
 -- Toggle NvimTree
-map("n", "<leader>n", ":NvimTreeToggle<CR>", {})
+map("n", "<leader>e", ":NvimTreeToggle<CR>", {})
 
 -- Yank entire line
 map("n", "yie", ":<C-u>%y<CR>", {})
