@@ -1,7 +1,7 @@
 
 ## Config files for bspwm
 
-<img src="https://raw.githubusercontent.com/elairavi/dotfiles/main/wallpapers/rice.png" alt="img" align="right" width="400px">
+<img src="/wallpapers/rice.png?raw=true" alt="img" align="right" width="400px">
 
 - Window manager - [bspwm](https://github.com/baskerville/bspwm)
 - Bar - [polybar](https://github.com/polybar/polybar)
