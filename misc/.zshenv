@@ -13,9 +13,8 @@ export GIT_PATH="XDG_CONFIG_HOME/git/config"
 export GOPATH="$HOME/.local/share/go"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export LESSHISTFILE="-"
-# export LIBVA_DRIVER_NAME=libva-intel-driver
 
-# tell ls to be colourfull
+# Tell ls to be colourfull
 export LSCOLORS=ExFxCxDxBxegedabagacad
 export CLICOLOR=1
 
@@ -32,13 +31,6 @@ export WM="bspwm"
 export OPENER="xdg-open"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
-# # Fzf
-# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
-#     --color=fg:#DEDDDA,bg:#0a0d10,hl:#81a1c1
-#     --color=fg+:#FFFFFF,bg+:#7797b7,hl+:#81a1c1
-#     --color=info:#b0ad85,prompt:#81a1c1,pointer:#b48dac
-#     --color=marker:#a3be8b,spinner:#b48dac,header:#a3be8b'
 
 export LF_ICONS="\
 di=:\
