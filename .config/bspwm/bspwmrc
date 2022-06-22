@@ -28,5 +28,3 @@ bspc rule -a Save file state=floating
 bspc rule -a Timeshift-gtk state=floating
 bspc rule -a mpv state=floating
 bspc rule -a Lxappearance state=floating
-# bspc rule -a Transmission-gtk state=floating
-# bspc rule -a KeePassXC state=floating
