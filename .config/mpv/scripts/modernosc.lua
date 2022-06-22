@@ -4,7 +4,6 @@
 
 -- fork by cyl0
 -- https://github.com/cyl0/MordenX/
-
 -- Edited by elai
 
 local assdraw = require 'mp.assdraw'
