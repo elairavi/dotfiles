@@ -11,8 +11,6 @@ xset r rate 250 160 &
 unclutter -idle 3 &
 picom &
 xrdb ~/.config/x11/.Xresources &
-# mpv --no-pause --no-video --volume=70 ~/Documents/data/startup-sound/start.mp3
-# /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
 
 ## Kill Auto started Programs If Already Running ##
 killall xsetroot -cursor_name && \
@@ -26,4 +24,3 @@ killall xset && \
 killall unclutter && \
 killall xsettingsd && \
 killall bspswallow
-# killall /usr/lib/mate-polkit/polkit-mate-authentication-agent-1 && \
