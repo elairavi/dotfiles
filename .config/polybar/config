@@ -11,23 +11,14 @@ foreground = #DEDDDA
 
 ## Blueis Modules Color ##
 background-alt = #aa7E9191
-# background-alt = #333333
-# background-alt = #7FA094
-# background-alt = #828E93
-# background-alt = #919191
-# background-alt = #839191
-# background-alt = #819191
 
 ## Background Color ##
 background = #aa0a0d11
-# background = #aa0e1112
-# background = #141a1b
 
 ### Bar Settings ###
 [bar/nasa]
 width = 100%
 height = 18
-# height = 21
 radius = 0.0
 fixed-center = true
 background = ${colors.background}
@@ -36,11 +27,8 @@ foreground = ${colors.foreground}
 border-size = 0
 border-top-size = 0
 border-bottom-size = 0
-# border-top-size = 1
-# border-bottom-size = 1
 
 border-color = #141a1b
-#border-color = #1B2224
 padding = 0
 module-margin = 0
 
@@ -49,11 +37,6 @@ font-0 = "Mononoki Nerd Font:pixelsize=9;2"
 font-1 = "Iosevka Nerd Font:size=9;2"
 font-2 = "Terminus:size=8;2"
 font-3 = "DejaVu Sans Mono wifi ramp:size=10;2"
-
-# font-3 = "DejaVuSansMono Nerd Font:size=9;2"
-# font-0 = "Mononoki Nerd Font:pixelsize=9;2:antialias=true:autohint=true"
-# font-1 = "Iosevka Nerd Font:size=9;2:antialias=true:autohint=true"
-# font-2 = "Terminus:size=8;2:antialias=true:autohint=true"
 
 ### bspwm Config ###
 modules-left = bspwm float-mode xwindow
@@ -80,8 +63,6 @@ screenchange-reload = true
 margin-top = 0
 margin-bottom = 0
 
-#     
-
 ### Xwindow ###
 [module/xwindow]
 type = internal/xwindow
@@ -93,15 +74,15 @@ label-empty-padding-left = 1
 label-empty-padding-right = 1
 label-empty = Manjaro Gnu/linux Operating System
 
+## Without Colors ##
+label-empty-foreground = ${colors.foreground}
+format-foreground = ${colors.foreground}
+
 # ## With Colors ##
 # label-empty-foreground = #000000
 # label-empty-background = ${colors.background-alt}
 # format-foreground = #000000
 # format-background = ${colors.background-alt}
-
-## Without Colors ##
-label-empty-foreground = ${colors.foreground}
-format-foreground = ${colors.foreground}
 
 ### WorkSpaces ###
 [module/bspwm]
@@ -130,7 +111,6 @@ ws-icon-default = 
 #ls-icon-0 = 1;
 # 
 
-# %index%
 label-focused = %name%
 # label-focused-foreground = ${colors.foreground}
 # label-focused-background = ${colors.background-alt}
@@ -241,9 +221,9 @@ ramp-volume-9 = 
 ramp-volume-font = 2
 
 label-muted =  muted
+format-muted-padding = 1
 format-muted-foreground = ${colors.foreground}
 # format-muted-background = ${colors.background-alt}
-format-muted-padding = 1
 
 ### wired-network ###
 [module/wired-network]
@@ -286,7 +266,6 @@ label-disconnected-padding-right = 1
 
 label-connected = %{A1:alacritty -e nmtui:} %downspeed%%{A}
 label-disconnected = %{A1:alacritty -e nmtui:}睊  Offline%{A}
-# label-disconnected = %{A1:alacritty -e nmtui:}睊  %downspeed%%{A}
 format-connected = | <ramp-signal><label-connected>
 format-disconnected = | <label-disconnected>
 
@@ -342,5 +321,7 @@ exec = echo []=
 format-background = ${colors.background}
 format-foreground = ${colors.foreground}
 click-left = bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
-click-right = ~/.config/polybar/scripts/calender.sh
+click-right = alacritty --hold -e cal -y -m
 # click-left = ~/.config/dmenu/dmenu-patched
+
+#     

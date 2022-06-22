@@ -1,7 +1,7 @@
 
-##################################
+#--------------------------------#
 # Configuration File For Polybar #
-##################################
+#--------------------------------#
 
 ### Colors ###
 [colors]
@@ -11,15 +11,9 @@ foreground = #FFFFFF
 
 ## Modules Color ##
 background-alt = #0e1112
-#background-alt = #141a1b
 
 ## Dwm Like Bar Color ##
 background = #7E9191
-# background = #7FA094
-# background = #828E93
-# background = #919191
-# background = #839191
-# background = #819191
 
 ### Bar Settings ###
 [bar/nasa]
@@ -34,11 +28,8 @@ foreground = ${colors.foreground}
 border-size = 0
 border-top-size = 0
 border-bottom-size = 0
-# border-top-size = 1
-# border-bottom-size = 1
 
 border-color = #141a1b
-#border-color = #1B2224
 padding = 0
 module-margin = 0
 
@@ -47,11 +38,6 @@ font-0 = "Mononoki Nerd Font:pixelsize=9;2"
 font-1 = "Iosevka Nerd Font:size=9;2"
 font-2 = "Terminus:size=8;2"
 font-3 = "DejaVu Sans Mono wifi ramp:size=10;2"
-
-# font-3 = "DejaVuSansMono Nerd Font:size=9;2"
-# font-0 = "Mononoki Nerd Font:pixelsize=9;2:antialias=true:autohint=true"
-# font-1 = "Iosevka Nerd Font:size=9;2:antialias=true:autohint=true"
-# font-2 = "Terminus:size=8;2:antialias=true:autohint=true"
 
 ### bspwm Config ###
 modules-left = bspwm float-mode xwindow
@@ -118,7 +104,6 @@ ws-icon-default = 
 #ls-icon-0 = 1;
 # 
 
-# %index%
 label-focused = %name%
 label-focused-background = ${colors.background}
 label-focused-foreground = ${colors.foreground}
@@ -158,7 +143,7 @@ format-padding = 1
 ### Date and Time ###
 [module/date]
 type = internal/date
-interval = 1
+# interval = 1
 
 time =  %I:%M %p |
 # time =  %a %H:%M |
@@ -272,7 +257,7 @@ label-connected-padding-right = 1
 label-disconnected-padding-right = 1
 
 label-connected = %{A1:alacritty -e nmtui:} %downspeed%%{A}
-label-disconnected = %{A1:alacritty -e nmtui:}睊  %downspeed%%{A}
+label-disconnected = %{A1:alacritty -e nmtui:}睊  Offline%{A}
 format-connected = | <ramp-signal><label-connected>
 format-disconnected = | <label-disconnected>
 
@@ -328,7 +313,7 @@ exec = echo []=
 format-background = ${colors.background-alt}
 format-foreground = ${colors.foreground}
 click-left = bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
-click-right = ~/.config/polybar/scripts/calender.sh
+click-right = alacritty --hold -e cal -y -m
 # click-left = ~/.config/dmenu/dmenu-patched
 
 #     
