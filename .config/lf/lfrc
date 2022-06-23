@@ -104,12 +104,6 @@ cmd chmod %{{
 cmd mkdir $mkdir -p "$(echo $* | tr ' ' '\ ')"
 map md push :mkdir<space>
 
-#cmd mkdir ${{
-#  printf "Directory Name: "
-#  read ans
-#  mkdir $ans
-#}}
-
 ## makefile ##
 cmd mkfile ${{
   printf "File Name: "
