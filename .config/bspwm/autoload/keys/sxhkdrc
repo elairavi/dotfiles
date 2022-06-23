@@ -5,7 +5,7 @@
 super + Return
 	alacritty && rm -rf ~/.pki
 
-## Dmenu Launcher  ##
+## Dmenu Launcher ##
 super + d
   $HOME/.config/dmenu/dmenu-patched
 
@@ -104,9 +104,9 @@ super + ctrl + Delete
 super + ctrl + shift + K
  exec xkill
 
-## Restart the session ##
+## Restart Bspwm / Sxhkd ##
 super + shift + r
- bspc wm -r
+ bspc wm -r && pkill -USR1 -x sxhkd
 
 ## Toggle fullscreen on and off ##
 super + f
