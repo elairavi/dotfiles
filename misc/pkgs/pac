@@ -23,7 +23,6 @@ bashrc-manjaro
 bat
 binutils
 bluez-libs
-boost-libs
 brave-browser
 brotli
 bspwm
@@ -403,7 +402,6 @@ pacman
 pacman-mirrors
 pam
 pambase
-pamixer
 pango
 parted
 patch
