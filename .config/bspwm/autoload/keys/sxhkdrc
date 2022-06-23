@@ -1,27 +1,23 @@
 
-##----- Keybindings for bspwm ------##
+#---------- Keybindings for bspwm ----------#
 
 ## Terminal ##
 super + Return
 	alacritty && rm -rf ~/.pki
 
-## Dmenu Launcher / Dmenu scripts ##
+## Dmenu Launcher  ##
 super + d
   $HOME/.config/dmenu/dmenu-patched
 
-# Dmenu One Video
+## Dmenu One Video ##
 super + y
   ~/Documents/scripts/youtube/yt-nonfree/ytfzf -l -D
 
-# Subscriptions
+## Subscriptions ##
 ctrl + shift + L
   ~/Documents/scripts/youtube/yt-nonfree/ytfzf -S --sort -l -D
 
-# Arch Manual
-super + a
-  ~/Documents/scripts/arch-manual-dmenu
-
-## xwallpaper/nsxiv ##
+## Xwallpaper / Nsxiv ##
 super + shift + I
  alacritty -e nsxiv -b -t $HOME/Pictures/wallpapers/art
 
@@ -29,31 +25,19 @@ super + shift + I
 super + shift + T
   transmission-gtk
 
-## Pacman / Aur ##
-alt + ctrl + p
-  alacritty --hold -e ~/Documents/scripts/pkg
-
-## Audio ##
-super + shift + v
- alacritty -e pulsemixer
+## Music ##
+super + m
+  alacritty -e lf ~/Music
 
 ## File Browser ##
 super + p
 	 pcmanfm
 
-## Neovim ##
-super + v
-  alacritty -e nvim
-
-## Music ##
-super + m
-  alacritty -e lf ~/Music
-
-## gotop ##
+## Gotop ##
 super + t
  alacritty -e gotop
 
-## lf ##
+## Lf ##
 super + r
   alacritty -e ~/.config/lf/scripts/lfub
 
@@ -65,46 +49,54 @@ super + w
 super + shift + c
   $HOME/Documents/scripts/xcp
 
-## gammastep ##
+## Gammastep ##
 super + g
   killall gammastep
 
 super + shift + g
   exec gammastep
 
-## screenshot ##
+## Screenshot ##
 super + Print
  maim ~/Pictures/screenshots/$(date +%s).png
+
+## Audio ##
+super + v
+ alacritty -e pulsemixer
+
+## Volume up / Volume down ##
+{XF86AudioLowerVolume, XF86AudioRaiseVolume}
+  pactl set-sink-volume @DEFAULT_SINK@ {-5%, +5%}
+
+## Mute ##
+XF86AudioMute
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+## Volume up / Volume down ##
+{alt + F11, alt + F12}
+  pactl set-sink-volume @DEFAULT_SINK@ {-5%, +5%}
+
+## Mute ##
+alt + F10
+  pactl set-sink-mute @DEFAULT_SINK@ toggle
 
 ## Brighness control ##
 XF86MonBrightness{Up,Down}
 	brightness{ --inc, --dec}
 
-## volume up ##
-alt + F12
-   pamixer --allow-boost -i 5
-
-## volume down ##
-alt + F11
-  pamixer -d 5
-
-## Mute ##
-alt + F10
-   pamixer -t
-
 ## Restart polybar ##
 super + shift + p
   ~/.config/polybar/scripts/launch.sh
 
-## Close App ##
+## Close a program ##
 super + q
  bspc node -c
 
-## quit the session ##
+## Quit the session ##
 super + ctrl + Print
  bspc {quit}
 
-## logout Prompt ##
+## Logout Prompt ##
 super + ctrl + Delete
  ~/Documents/scripts/logout
 
@@ -112,7 +104,7 @@ super + ctrl + Delete
 super + ctrl + shift + K
  exec xkill
 
-## restart the session ##
+## Restart the session ##
 super + shift + r
  bspc wm -r
 
@@ -124,11 +116,11 @@ super + f
 super + shift + f
    bspc node focused.tiled -t floating || bspc node focused.floating -t tiled
 
-## focus the node in the given direction ##
+## Focus the node in the given direction ##
 super + {_,shift + }{h,j,k,l}
 	bspc node -{f,s} {west,south,north,east}
 
-## expand a window by moving one of its side ##
+## Expand a window by moving one of its side ##
 super + ctrl + {h,j,k,l}
  {bspc node -z right -20 0; \
  bspc node -z left +20 0, \
@@ -152,7 +144,7 @@ super + shift + {1-9,0}
 super + ctrl {1-9,0}
 	 bspc node -d focused:'^{1-9,10}'
 
-## cycle between workspaces ##
+## Cycle between workspaces ##
 super + n
  bspc desktop -f {next}.local
 
@@ -160,9 +152,9 @@ super + b
  bspc desktop -f {prev}.local
 
 ## Select 2 programs or more and send them to a workspace ##
-super + {_,shift + }n
+super + {_,shift + }s
     bspc node -f {next,prev}.local
 
-## move floating window ##
+## Move floating window ##
 super + alt + {h,j,k,l}
 	bspc node -v {-20 0,0 20,0 -20,20 0}
