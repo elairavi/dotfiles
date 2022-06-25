@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 
-prompt="dmenu -l 6 -fn 'MononokiNerdFont:regular:pixelsize=12' -sf #000000 -nb #0a0d11 -sb #7E9191 "
+prompt="dmenu -l 7 -fn 'MononokiNerdFont:regular:pixelsize=12' -sf #000000 -nb #0a0d11 -sb #7E9191 "
 
 uptime=$(uptime -p | sed -e 's/up //g')
-# dwm_pid="$(pidof dwm)"
 
 hibernate="  hibernate"
 shutdown="  shutdown"
 reboot="ﰇ  restart"
 suspend="鈴  suspend"
 lock="  lock"
-# logout="﫼 logout"
+logout="﫼  logout"
 cancel="窱 cancel"
 
 option="$cancel\n$hibernate\n$shutdown\n$reboot\n$suspend\n$lock\n$logout"
@@ -34,5 +33,5 @@ case $select in
 		slock
 		;;
 	$logout)
-		# kill -TERM dwmpid $dwm_pid
+    bspc quit
 esac
