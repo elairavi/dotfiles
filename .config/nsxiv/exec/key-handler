@@ -1,5 +1,7 @@
 #!/usr/bin/sh
 
+## Copy selected wallpaper and set it using xwallpaper ##
+
 while read file
 do
   fullpath="$(pwd)/$file"
