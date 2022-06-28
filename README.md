@@ -1,5 +1,6 @@
+<h2 align="center"> BSPWM </h2>
 
-## Config files for bspwm
+<h2 align="center"> ━━━━━━  ❖  ━━━━━━ </h2>
 
 <img src="wallpapers/rice.png?raw=true" alt="img" align="right" width="400px">
 
